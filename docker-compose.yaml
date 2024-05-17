@@ -3,14 +3,14 @@ services:
   postgres:
     image: 'postgres:latest'
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_DB: mydatabase
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: myuser
     ports:
       - '5432:5432'
   web:
     build: .
-    command: flask run --host=0.0.0.0
+    command: bash -c "./delete_migrations.sh && flask run --host=0.0.0.0"
     volumes:
       - .:/code
     ports:
@@ -18,5 +18,5 @@ services:
     depends_on:
       - postgres
     environment:
-      - FLASK_APP=app.py
-      - FLASK_ENV=development
+      FLASK_APP: app.py
+      FLASK_ENV: development

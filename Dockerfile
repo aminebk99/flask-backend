@@ -16,9 +16,15 @@ ENV FLASK_APP=app.py
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
+# Ensure the delete_migrations.sh script is executable
+RUN chmod +x /code/delete_migrations.sh
+
+# Run the delete_migrations.sh script
+RUN /code/delete_migrations.sh
+
 # Initialize and upgrade the database schema
 # RUN flask db init && \
-#     flask db migrate -m "Initial migration." && \
+#     flask db migrate && \
 #     flask db upgrade
 
 # Run app.py when the container launches
