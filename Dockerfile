@@ -17,9 +17,9 @@ ENV FLASK_APP=app.py
 EXPOSE 5000
 
 # Initialize and upgrade the database schema
-RUN flask db init && \
-    flask db migrate -m "Initial migration." && \
-    flask db upgrade
+# RUN flask db init && \
+#     flask db migrate -m "Initial migration." && \
+#     flask db upgrade
 
 # Run app.py when the container launches
 CMD ["flask", "run", "--host=0.0.0.0"]
