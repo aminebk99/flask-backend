@@ -26,5 +26,4 @@ fi
 
 # Initialize, migrate, and upgrade the database
 flask db init
-flask db migrate
-flask db upgrade
+
